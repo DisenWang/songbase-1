@@ -11,7 +11,7 @@ def index():
 
 @app.route('/user/<string:name>/')
 def get_user(name):
-    return 'hello %' % name
+    return 'hello %s' % name
 
 
 # https://goo.gl/Pc39w8 explains the following line
