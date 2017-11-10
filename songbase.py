@@ -6,12 +6,41 @@ app = Flask(__name__)
 def index():
     # return HTML
     # return "<h1>this is the index page!<h1>"
-    return "<h1>this is me</h1>"
+    return render_template('index.html')
+
+
+@app.route('/songs')
+def show_all_songs():
+    songs = [
+        'Paradise',
+        'Yellow',
+        'Viva La Vida'
+    ]
+    return render_template('songs.html', songs=songs)
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+
+@app.route('/users')
+def show_all_users():
+    # return "<h2>this is the page for all users</h2>"
+    return render_template('user-all.html')
 
 
 @app.route('/user/<string:name>/')
-def get_user(name):
-    return 'hello %s' % name
+def get_user_name(name):
+    # return "hello " + name
+    # return "Hello %s, this is %s" % (name, 'administrator')
+    return render_template('user.html', name=name)
+
+
+@app.route('/song/<int:id>/')
+def get_song_id(id):
+    # return "This song's ID is " + str(id)
+    return "Hi, this is %s and the song's id is %d" % ('administrator', id)
 
 
 # https://goo.gl/Pc39w8 explains the following line
